@@ -28,17 +28,26 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
+	// console.log(attributes);
 	return (
 		<div { ...blockProps }>
-			<Placeholder 
+			{attributes.message ? (
+				<TextControl
+				value={ attributes.message }
+				onChange={ ( val ) => setAttributes( { message: val } ) }
+				/>
+			) : (
+				<Placeholder 
 				label={ __('Gutenpride Block', 'gutenpride')}
 				instructions={ __('Add your message', 'gutenpride')}
-			>
-				<TextControl
-					value={ attributes.message }
-					onChange={ ( val ) => setAttributes( { message: val } ) }
-				/>
-			</Placeholder>
+				>
+					<TextControl
+						value={ attributes.message }
+						onChange={ ( val ) => setAttributes( { message: val } ) }
+					/>
+				</Placeholder>
+			)}
+
 		</div>
 	);
 }

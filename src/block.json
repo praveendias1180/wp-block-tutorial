@@ -12,6 +12,11 @@
 			"type": "string",
 			"source": "text",
 			"selector": "div"
+		},
+		"heading": {
+			"type": "string",
+			"source": "text",
+			"selector": "div"
 		}
 	},
 	"supports": {
