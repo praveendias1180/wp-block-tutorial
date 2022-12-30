@@ -3,7 +3,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-components/
  */
-import { TextControl } from '@wordpress/components';
+import { Placeholder, TextControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -29,10 +30,15 @@ export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
 	return (
 		<div { ...blockProps }>
-			<TextControl
-				value={ attributes.message }
-				onChange={ ( val ) => setAttributes( { message: val } ) }
-			/>
+			<Placeholder 
+				label={ __('Gutenpride Block', 'gutenpride')}
+				instructions={ __('Add your message', 'gutenpride')}
+			>
+				<TextControl
+					value={ attributes.message }
+					onChange={ ( val ) => setAttributes( { message: val } ) }
+				/>
+			</Placeholder>
 		</div>
 	);
 }
